@@ -28,4 +28,6 @@ quick_script.py
 *.json
 *.xlsx
 *.csv
-*.txt
+
+db.sqlite3
+*.db
