@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<div class="homepage-container p-4 rounded">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title">Produkty</h2>
+            {% for product in products %}
+
+                {% if product.pk %}
+                <li>
+                    <a href="{% url 'product-detail' product.pk %}">{{ product.name }}</a>
+                </li>
+                {% endif %}
+
+            {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

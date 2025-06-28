@@ -1,0 +1,15 @@
+from django.db import models
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=150)
+    code = models.CharField(max_length=50, unique=True)
+    product_type = models.ForeignKey('products.ProductType', on_delete=models.SET_NULL, null=True, blank=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
+    def __str__(self):
+        return self.name
