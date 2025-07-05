@@ -3,10 +3,10 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-<div class="homepage-container p-4 rounded">
+<div class="homepage-container rounded flex-fill p-1">
     <div class="card shadow-sm">
         <div class="card-body">
-            <h2 class="card-title">{{ product.name }}</h2>
+            <h2 class="card-title text-break">{{ product.name }}</h2>
             <p>Typ: {{ product.product_type }}</p>
         </div>
     </div>
