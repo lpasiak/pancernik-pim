@@ -41,5 +41,8 @@
     min-height: 80vh;
 }
 .homepage-container > card {
-    max-width: 800px;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }

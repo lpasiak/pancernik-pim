@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete {{ product.name }}{% endblock %}
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-break">Na pewno chcesz usunąć {{ product.name }}?</h2>
+            <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-sm btn-outline-danger" value="Usuń produkt">
+            </form>
+        </div>
+    </div>
+    <p class="p-2 mt-1"><a href="{% url 'product-list' %}">Wróć do listy produktów</a></p>
+</div>
+{% endblock content %}
