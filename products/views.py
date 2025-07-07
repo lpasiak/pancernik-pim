@@ -1,24 +1,25 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import (ListView,
-                                  DetailView,
                                   CreateView,
                                   DeleteView,
                                   UpdateView)
-from .models import Product
-from .forms import ProductCreateForm, ProductUpdateForm
-from django.urls import reverse_lazy
+
+from .forms import (ProductCreateForm,
+                    ProductUpdateForm,
+                    ProductTypeCreateForm,
+                    ProductTypeUpdateForm)
+
+from .models import Product, ProductType
+
+
+# Product views
 
 
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'products'
-
-
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'products/product_detail.html'
-    context_object_name = 'product'
 
 
 class ProductCreateView(CreateView):
@@ -42,4 +43,37 @@ class ProductUpdateView(UpdateView):
     context_object_name = 'product'
     
     def get_success_url(self):
-        return reverse_lazy('product-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('product-update', kwargs={'pk': self.object.pk})
+
+
+# Product Type views
+
+
+class ProductTypeListView(ListView):
+    model = ProductType
+    template_name = 'products/product_type_list.html'
+    context_object_name = 'product_types'
+
+
+class ProductTypeCreateView(CreateView):
+    model = ProductType
+    template_name = 'products/product_type_create.html'
+    form_class = ProductTypeCreateForm
+    success_url = reverse_lazy('product-type-list')
+
+
+class ProductTypeDeleteView(DeleteView):
+    model = ProductType
+    template_name = 'products/product_type_delete.html'
+    context_object_name = 'product_type'
+    success_url = reverse_lazy('product-type-list')
+
+
+class ProductTypeUpdateView(UpdateView):
+    model = ProductType
+    template_name = 'products/product_type_update.html'
+    form_class = ProductTypeUpdateForm
+    context_object_name = 'product_type'
+    
+    def get_success_url(self):
+        return reverse_lazy('product-type-update', kwargs={'pk': self.object.pk})

@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Product List{% endblock %}
+{% block title %}Product Type List{% endblock %}
 
 {% block content %}
 <div class="homepage-container rounded flex-fill p-1">
     <div class="card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="card-title mb-0">Produkty</h2>
-                <a href="{% url 'product-create' %}" class="btn btn-sm btn-success">Dodaj produkt</a>
+                <h2 class="card-title mb-0">Typy produktów</h2>
             </div>
 
             <div class="table-responsive">
@@ -16,27 +15,19 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Kod</th>
                             <th scope="col">Nazwa</th>
-                            <th scope="col">Typ</th>
                             <th scope="col">Akcje</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for product in products %}
-                            {% if product.pk %}
+                        {% for type in product_types %}
+                            {% if type.pk %}
                             <tr>
-                                <td class="text-break">{{ product.pk }}</td>
-                                <td class="text-break">{{ product.code }}</td>
-                                <td class="text-break">{{ product.name }}</td>
-                                <td class="text-break">{% if product.product_type %}
-                                        {{ product.product_type.name }}
-                                    {% else %}
-                                        -
-                                    {% endif %}
+                                <td class="text-break">{{ type.pk }}</td>
+                                <td class="text-break">{{ type.name }}</td>
                                 </td>
                                 <td>
-                                    <a href="{% url 'product-update' product.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                                    <a href="{% url 'product-type-update' type.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
                                 </td>
                             </tr>
                             {% endif %}

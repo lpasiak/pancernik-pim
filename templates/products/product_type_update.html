@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}{{ product.name }} Edit{% endblock %}
+{% block title %}{{ product_type.name }} Edit{% endblock %}
 
 {% block content %}
 <div class="homepage-container rounded flex-fill p-1">
     <div class="card shadow-sm">
         <div class="card-body">
-            <h3>{{ product.name }}</h3>
+            <h3>{{ product_type.name }}</h3>
             <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
             <button class="btn btn-sm btn-outline-success" type="submit">Aplikuj zmiany</button>
-            <a href="{% url 'product-delete' product.pk %}" class="btn btn-sm btn-danger">Usuń produkt</a>
+            <a href="{% url 'product-type-delete' product_type.pk %}" class="btn btn-sm btn-danger">Usuń produkt</a>
         </div>
     </div>
-    <p class="p-2 mt-1"><a href="{% url 'product-list' %}">Wróć do listy produktów</a></p>
+    <p class="p-2 mt-1"><a href="{% url 'product-type-list' %}">Wróć do listy produktów</a></p>
 </div>
 {% endblock content %}
