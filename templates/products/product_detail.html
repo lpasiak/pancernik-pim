@@ -8,6 +8,7 @@
         <div class="card-body">
             <h2 class="card-title text-break">{{ product.name }}</h2>
             <a href="{% url 'product-delete' product.pk %}" class="btn btn-sm btn-danger">Usuń produkt</a>
+            <a href="{% url 'product-update' product.pk %}" class="btn btn-sm btn-primary">Edytuj produkt</a>
             <p>Typ: {{ product.product_type }}</p>
         </div>
     </div>
