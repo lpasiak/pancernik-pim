@@ -1,11 +1,13 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from .compatibility import Compatibility
 
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
     code = models.CharField(max_length=50, unique=True)
     product_type = models.ForeignKey('products.ProductType', on_delete=models.SET_NULL, null=True, blank=True)
+    compatibilities = models.ManyToManyField(Compatibility, blank=True)
 
     class Meta:
         ordering = ['name']

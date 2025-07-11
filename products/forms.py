@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, ProductType
+from .models import Product, ProductType, Compatibility, DeviceCode
 
 # Product forms
 
@@ -8,7 +8,10 @@ class ProductCreateForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['code', 'name', 'product_type']
+        fields = ['code', 'name', 'product_type', 'compatibilities']
+        widgets = {
+            'compatibilities': forms.CheckboxSelectMultiple()
+        }
 
         def clean_code(self):
             code = self.cleaned_data.get('code')
@@ -21,7 +24,10 @@ class ProductUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Product
-        fields = ['code', 'name', 'product_type']
+        fields = ['code', 'name', 'product_type', 'compatibilities']
+        widgets = {
+            'compatibilities': forms.CheckboxSelectMultiple()
+        }
 
         def clean_code(self):
             code = self.cleaned_data.get('code')
@@ -44,4 +50,12 @@ class ProductTypeUpdateForm(forms.ModelForm):
     
     class Meta:
         model = ProductType
+        fields = ['name']
+
+# Compatibility forms
+
+class Compatibility(forms.ModelForm):
+
+    class Meta:
+        model = Compatibility
         fields = ['name']

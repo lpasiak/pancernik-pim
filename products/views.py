@@ -10,7 +10,7 @@ from .forms import (ProductCreateForm,
                     ProductTypeCreateForm,
                     ProductTypeUpdateForm)
 
-from .models import Product, ProductType
+from .models import Product, ProductType, Compatibility
 
 
 # Product views
@@ -77,3 +77,11 @@ class ProductTypeUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse_lazy('product-type-update', kwargs={'pk': self.object.pk})
+
+
+# Compatibility Views
+
+class CompatibilityListView(ListView):
+    model = Compatibility
+    template_name = 'products/compatibility_list.html'
+    context_object_name = 'compatibilities'

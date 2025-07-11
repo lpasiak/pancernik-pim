@@ -6,7 +6,8 @@ from .views import (ProductListView,
                     ProductTypeListView,
                     ProductTypeCreateView,
                     ProductTypeDeleteView,
-                    ProductTypeUpdateView)
+                    ProductTypeUpdateView,
+                    CompatibilityListView)
 
 urlpatterns = [
     # Product
@@ -19,4 +20,6 @@ urlpatterns = [
     path('product-types/create/', ProductTypeCreateView.as_view(), name='product-type-create'),
     path('product-types/<int:pk>/delete', ProductTypeDeleteView.as_view(), name='product-type-delete'),
     path('product-types/<int:pk>/update', ProductTypeUpdateView.as_view(), name='product-type-update'),
+    # Compatibility
+    path('compatibilities/', CompatibilityListView.as_view(), name='compatibility-list'),
 ]

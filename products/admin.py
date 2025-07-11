@@ -1,5 +1,6 @@
 from django.contrib import admin
-from products.models import Product, ProductType
+from products.models import (
+    Product, ProductType, Compatibility, DeviceCode)
 
 
 @admin.register(Product)
@@ -13,3 +14,13 @@ class ProductAdmin(admin.ModelAdmin):
 class ProductTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
+
+
+@admin.register(Compatibility)
+class CompatibilityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'short_name', 'full_name')
+
+
+@admin.register(DeviceCode)
+class DeviceCodeAdmin(admin.ModelAdmin):
+    list_display = ['code']

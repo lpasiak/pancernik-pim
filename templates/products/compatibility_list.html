@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Compatibility List{% endblock %}
+
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="card-title mb-0">Kompatybilności</h2>
+                <a href="" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Zdjęcie</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for compatibility in compatibilities %}
+                            {% if compatibility.pk %}
+                            <tr>
+                                <td class="text-break">{{ compatibility.pk }}</td>
+                                <td class="text-break"><img src="{{ compatibility.thumbnail_url }}" alt="{{ compatibility.name }}" width="75" height="75"></td>
+                                <td class="text-break">{{ compatibility.name }}</td>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
