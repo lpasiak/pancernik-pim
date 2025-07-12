@@ -23,7 +23,8 @@ from core.views import home
 urlpatterns = [
     path('', home, name='home'),
     path('admin/', admin.site.urls),
-    path('products/', include('products.urls'))
+    path('products/', include('products.urls')),
+    path('select2/', include('django_select2.urls'))
 ]
 
 if settings.DEBUG:

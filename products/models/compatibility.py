@@ -26,10 +26,22 @@ class Compatibility(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        is_new = self.pk is None
+        try:
+            old = Compatibility.objects.get(pk=self.pk)
+            image_changed = old.image != self.image
+
+            if image_changed and old.image:
+                old.image.delete(save=False)
+
+            if image_changed and old.thumbnail:
+                old.thumbnail.delete(save=False)
+
+        except Compatibility.DoesNotExist:
+            image_changed = True 
+
         super().save(*args, **kwargs)
 
-        if self.image and not self.thumbnail:
+        if self.image and (image_changed or not self.thumbnail):
             self.generate_thumbnail()
             super().save(update_fields=['thumbnail'])
 
@@ -49,7 +61,7 @@ class Compatibility(models.Model):
 
         thumbnail_name = os.path.basename(self.image.name)
         self.thumbnail.save(
-            f'{thumbnail_name}_thumbnail',
+            f'thumbnail_{thumbnail_name}',
             ContentFile(thumb_io.getvalue()),
             save=False
         )
