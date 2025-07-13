@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from .compatibility import Compatibility
+from .compatibilities import Compatibility
 
 
 class Product(models.Model):
