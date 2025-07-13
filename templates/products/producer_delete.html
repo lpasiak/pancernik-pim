@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete {{ producer.name }}{% endblock %}
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-break">Na pewno chcesz usunąć {{ producer.name }}?</h2>
+            <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-sm btn-outline-danger" value="Usuń producenta">
+            </form>
+        </div>
+    </div>
+    <p class="p-2 mt-1"><a href="{% url 'producer-list' %}">Wróć do listy producentów</a></p>
+</div>
+{% endblock content %}

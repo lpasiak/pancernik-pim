@@ -28,6 +28,7 @@
     z-index: 1030;
     color: #eaeaea;
 }
+
 /* SIDEBAR Styling */
 .sidebar {
     position: sticky;
@@ -39,12 +40,14 @@
     height: calc(100vh - 56px);
     border-right: 1px solid #ddd;
 }
+
 .sidebar-link {
     color: #212529;
     padding: 8px 12px;
     border-radius: 6px;
     transition: background-color 0.2s ease;
 }
+
 .sidebar .nav-link {
     color: #212529;
     border-radius: 6px;
@@ -53,7 +56,7 @@
 }
 
 .sidebar .nav-link:hover {
-    background-color: #dcdcdc; /* very subtle gold highlight */
+    background-color: #dcdcdc; /* Pancernik gold highlight */
     color: #2c2c2c;
 }
 /* MAIN Content Styling */
@@ -62,6 +65,7 @@
     padding: 2rem;
     min-height: 80vh;
 }
+
 .homepage-container > card {
     width: 100%;
     max-width: 100%;
@@ -116,7 +120,6 @@
     background-color: hsl(36, 42%, 46%) !important;
 }
 
-/* Additional primary color utilities */
 .border-primary {
     border-color: hsl(36, 42%, 46%) !important;
 }
@@ -129,7 +132,6 @@
     color: hsl(36, 42%, 45%) !important;
 }
 
-/* Form controls with primary focus */
 .form-control:focus {
     border-color: hsl(36, 42%, 46%) !important;
     box-shadow: 0 0 0 0.25rem rgba(165, 129, 68, 0.25) !important;

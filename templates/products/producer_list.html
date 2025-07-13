@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Producer List{% endblock %}
+
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="card-title mb-0">Producenci</h2>
+                <a href="{% url 'producer-create' %}" class="btn btn-sm btn-success">Dodaj producenta</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producer in producers %}
+                            {% if producer.pk %}
+                            <tr>
+                                <td class="text-break">{{ producer.pk }}</td>
+                                <td class="text-break">{{ producer.name }}</td>
+                                <td>
+                                    <a href="{% url 'producer-update' producer.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

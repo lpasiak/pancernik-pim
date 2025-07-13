@@ -1,17 +1,5 @@
 from django.urls import path
-from .views import (ProductListView,
-                    ProductCreateView,
-                    ProductDeleteView,
-                    ProductUpdateView,
-                    ProductTypeListView,
-                    ProductTypeCreateView,
-                    ProductTypeDeleteView,
-                    ProductTypeUpdateView,
-                    CompatibilityListView,
-                    CompatibilityCreateView,
-                    CompatibilityDeleteView,
-                    CompatibilityUpdateView,
-                    DeviceCodeCreateView)
+from .views import *
 
 urlpatterns = [
     # Product
@@ -30,4 +18,9 @@ urlpatterns = [
     path('compatibilities/<int:pk>/delete', CompatibilityDeleteView.as_view(), name='compatibility-delete'),
     path('compatibilities/<int:pk>/update', CompatibilityUpdateView.as_view(), name='compatibility-update'),
     path('compatibilities/device-code/create/', DeviceCodeCreateView.as_view(), name='device-code-create'), 
+    # Producer
+    path('producers/', ProducerListView.as_view(), name='producer-list'),
+    path('producers/create', ProducerCreateView.as_view(), name='producer-create'),
+    path('producers/<int:pk>/delete', ProducerDeleteView.as_view(), name='producer-delete'),
+    path('producers/<int:pk>/update', ProducerUpdateView.as_view(), name='producer-update')
 ]

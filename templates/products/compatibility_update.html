@@ -12,8 +12,9 @@
             {% csrf_token %}
             {{ form|crispy }}
             <button class="btn btn-sm btn-outline-success" type="submit">Aplikuj zmiany</button>
-            <a href="{% url 'compatibility-delete' compatibility.pk %}" class="btn btn-sm btn-danger">Usuń produkt</a>
-            <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod produktu</a>
+            <a href="{% url 'compatibility-delete' compatibility.pk %}" class="btn btn-sm btn-danger">Usuń kompatybilność</a>
+            <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod urządzenia</a>
+            <small><a href="https://www.gsmarena.com">Link do GSMArena</a></small>
         </div>
     </div>
     <p class="p-2 mt-1"><a href="{% url 'compatibility-list' %}">Wróć do listy kompatybilności</a></p>
