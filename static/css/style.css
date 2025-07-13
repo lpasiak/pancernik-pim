@@ -1,3 +1,25 @@
+/* Bootstrap Primary Color Override */
+:root {
+    --bs-primary: #a58149;
+    --bs-primary-rgb: 165, 129, 68;
+    --bs-primary-text-emphasis: #8a6b2a;
+    --bs-primary-bg-subtle: #f8f4ed;
+    --bs-primary-border-subtle: #f0e8d8;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: hsl(36, 42%, 45%);
+    --bs-btn-hover-border-color: hsl(36, 42%, 45%);
+    --bs-btn-focus-shadow-rgb: 165, 129, 68;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: hsl(36, 42%, 40%);
+    --bs-btn-active-border-color: hsl(36, 42%, 40%);
+    --bs-btn-disabled-color: #6c757d;
+    --bs-btn-disabled-bg: var(--bs-primary);
+    --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
 /* NAVBAR Styling */
 .navbar {
     position: sticky;
@@ -45,6 +67,77 @@
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+/* Bootstrap Primary Color Overrides */
+.btn-primary {
+    background-color: hsl(36, 42%, 46%) !important;
+    border-color: hsl(36, 42%, 46%) !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-color: hsl(36, 42%, 45%) !important;
+    border-color: hsl(36, 42%, 45%) !important;
+    color: #fff !important;
+}
+
+.btn-primary:focus {
+    background-color: hsl(36, 42%, 45%) !important;
+    border-color: hsl(36, 42%, 45%) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.25rem rgba(165, 129, 68, 0.25) !important;
+}
+
+.btn-outline-primary {
+    color: hsl(36, 42%, 46%) !important;
+    border-color: hsl(36, 42%, 46%) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: hsl(36, 42%, 46%) !important;
+    border-color: hsl(36, 42%, 46%) !important;
+    color: #fff !important;
+}
+
+.btn-outline-primary:focus {
+    background-color: hsl(36, 42%, 46%) !important;
+    border-color: hsl(36, 42%, 46%) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.25rem rgba(165, 129, 68, 0.25) !important;
+}
+
+.text-primary {
+    color: hsl(36, 42%, 46%) !important;
+}
+
+.bg-primary {
+    background-color: hsl(36, 42%, 46%) !important;
+}
+
+/* Additional primary color utilities */
+.border-primary {
+    border-color: hsl(36, 42%, 46%) !important;
+}
+
+.link-primary {
+    color: hsl(36, 42%, 46%) !important;
+}
+
+.link-primary:hover {
+    color: hsl(36, 42%, 45%) !important;
+}
+
+/* Form controls with primary focus */
+.form-control:focus {
+    border-color: hsl(36, 42%, 46%) !important;
+    box-shadow: 0 0 0 0.25rem rgba(165, 129, 68, 0.25) !important;
+}
+
+.form-select:focus {
+    border-color: hsl(36, 42%, 46%) !important;
+    box-shadow: 0 0 0 0.25rem rgba(165, 129, 68, 0.25) !important;
 }
 
 /* Select2 Crispy Forms Styling */

@@ -14,8 +14,6 @@ class DeviceCode(models.Model):
 
 class Compatibility(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    short_name = models.CharField(max_length=50, unique=True)
-    full_name = models.CharField(max_length=200, unique=True)
 
     image = models.ImageField(upload_to='compatibility_images/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='compatibility_images/thumbnails/', null=True, blank=True)
@@ -70,4 +68,10 @@ class Compatibility(models.Model):
     def thumbnail_url(self):
         if self.thumbnail:
             return self.thumbnail.url
-        return urljoin(settings.MEDIA_URL, 'compatibility_images/thumbnails/default_photo.jpg')
+        return urljoin(settings.MEDIA_URL, 'compatibility_images/thumbnails/thumbnail_default_photo.jpg')
+
+    @property
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return urljoin(settings.MEDIA_URL, 'compatibility_images/default_photo.jpg')

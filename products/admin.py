@@ -18,7 +18,7 @@ class ProductTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Compatibility)
 class CompatibilityAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_name', 'full_name')
+    list_display = ('name',)
 
 
 @admin.register(DeviceCode)

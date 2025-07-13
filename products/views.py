@@ -8,9 +8,12 @@ from django.views.generic import (ListView,
 from .forms import (ProductCreateForm,
                     ProductUpdateForm,
                     ProductTypeCreateForm,
-                    ProductTypeUpdateForm)
+                    ProductTypeUpdateForm,
+                    CompatibilityCreateForm,
+                    CompatibilityUpdateForm,
+                    DeviCeCodeCreateForm)
 
-from .models import Product, ProductType, Compatibility
+from .models import Product, ProductType, Compatibility, DeviceCode
 
 
 # Product views
@@ -81,7 +84,39 @@ class ProductTypeUpdateView(UpdateView):
 
 # Compatibility Views
 
+
 class CompatibilityListView(ListView):
     model = Compatibility
     template_name = 'products/compatibility_list.html'
     context_object_name = 'compatibilities'
+
+
+class CompatibilityCreateView(CreateView):
+    model = Compatibility
+    template_name = 'products/compatibility_create.html'
+    form_class = CompatibilityCreateForm
+    success_url = reverse_lazy('compatibility-list')
+
+
+class CompatibilityDeleteView(DeleteView):
+    model = Compatibility
+    template_name = 'products/compatibility_delete.html'
+    context_object_name = 'compatibility'
+    success_url = reverse_lazy('compatibility-list')
+
+
+class CompatibilityUpdateView(UpdateView):
+    model = Compatibility
+    template_name = 'products/compatibility_update.html'
+    form_class = CompatibilityUpdateForm
+    context_object_name = 'compatibility'
+
+    def get_success_url(self):
+        return reverse_lazy('compatibility-update', kwargs={'pk': self.object.pk})
+
+
+class DeviceCodeCreateView(CreateView):
+    model = DeviceCode
+    template_name = 'products/device_code_create.html'
+    form_class = DeviCeCodeCreateForm
+    success_url = reverse_lazy('compatibility-list')

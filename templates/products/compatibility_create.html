@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create a compatibility{% endblock %}
+
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Dodaj kompatybilność</h2>
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-sm btn-outline-success" type="submit">Stwórz kompatybilność</button>
+            <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod produktu</a>
+        </div>
+    </div>
+    <a href="{% url 'compatibility-list' %}" class="p-2 m-2">Wróć do listy kompatybilności</a>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function() {
+      $('#id_device_codes').select2();
+    });
+  </script>
+{% endblock scripts %}

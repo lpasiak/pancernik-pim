@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{ compatibility.name }} Edit{% endblock %}
+
+{% block content %}
+<div class="homepage-container rounded flex-fill p-1">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3>{{ compatibility.name }}</h3>
+            <img src="{{ compatibility.image_url }}" alt="{{ compatibility.name }}" class="my-2" width="300" height="300">
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER|default:'' }}">
+            {{ form|crispy }}
+            <button class="btn btn-sm btn-outline-success" type="submit">Aplikuj zmiany</button>
+            <a href="{% url 'compatibility-delete' compatibility.pk %}" class="btn btn-sm btn-danger">Usuń produkt</a>
+            <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod produktu</a>
+        </div>
+    </div>
+    <p class="p-2 mt-1"><a href="{% url 'compatibility-list' %}">Wróć do listy kompatybilności</a></p>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function() {
+      $('#id_device_codes').select2();
+    });
+  </script>
+{% endblock scripts %}

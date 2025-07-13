@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="card-title mb-0">Kompatybilności</h2>
-                <a href="" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
+                <a href="{% url 'compatibility-create' %}" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
             </div>
 
             <div class="table-responsive">
@@ -26,10 +26,10 @@
                             {% if compatibility.pk %}
                             <tr>
                                 <td class="text-break">{{ compatibility.pk }}</td>
-                                <td class="text-break"><img src="{{ compatibility.thumbnail_url }}" alt="{{ compatibility.name }}" width="75" height="75"></td>
+                                <td class="text-break"><img src="{{ compatibility.thumbnail_url }}" alt="{{ compatibility.name }}" width="60" height="60"></td>
                                 <td class="text-break">{{ compatibility.name }}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                                    <a href="{% url 'compatibility-update' compatibility.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
                                 </td>
                             </tr>
                             {% endif %}
