@@ -8,7 +8,10 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="card-title mb-0">Kompatybilności</h2>
-                <a href="{% url 'compatibility-create' %}" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
+                <div>
+                    <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod produktu</a>
+                    <a href="{% url 'compatibility-create' %}" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
+                </div>
             </div>
 
             <div class="table-responsive">
@@ -18,6 +21,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Zdjęcie</th>
                             <th scope="col">Nazwa</th>
+                            <th scope="col">Kody urządzenia</th>
                             <th scope="col">Akcje</th>
                         </tr>
                     </thead>
@@ -28,6 +32,13 @@
                                 <td class="text-break">{{ compatibility.pk }}</td>
                                 <td class="text-break"><img src="{{ compatibility.thumbnail_url }}" alt="{{ compatibility.name }}" width="60" height="60"></td>
                                 <td class="text-break">{{ compatibility.name }}</td>
+                                <td class="text-break">
+                                    {% for device_code in compatibility.device_codes.all %}
+                                        <span class="badge bg-secondary me-1">{{ device_code.code }}</span>
+                                    {% empty %}
+                                        
+                                    {% endfor %}
+                                </td>
                                 <td>
                                     <a href="{% url 'compatibility-update' compatibility.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
                                 </td>
