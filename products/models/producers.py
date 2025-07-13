@@ -7,6 +7,7 @@ class Producer(models.Model):
     def __str__(self):
         return self.name
 
+
 class SafetyProducer(models.Model):
     pass
 
