@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (ListView,
                                   CreateView,
@@ -9,8 +8,7 @@ from .forms import *
 from .models import (Product,
                      ProductType,
                      Compatibility,
-                     DeviceCode,
-                     Producer)
+                     DeviceCode)
 
 
 # Product views
@@ -117,36 +115,3 @@ class DeviceCodeCreateView(CreateView):
     template_name = 'products/device_code_create.html'
     form_class = DeviCeCodeCreateForm
     success_url = reverse_lazy('compatibility-list')
-
-
-# Producer Views
-
-
-class ProducerListView(ListView):
-    model = Producer
-    template_name = 'products/producer_list.html'
-    context_object_name = 'producers'
-
-
-class ProducerCreateView(CreateView):
-    model = Producer
-    template_name = 'products/producer_create.html'
-    fields = ['name']
-    success_url = reverse_lazy('producer-list')
-
-
-class ProducerDeleteView(DeleteView):
-    model = Producer
-    template_name = 'products/producer_delete.html'
-    context_object_name = 'producer'
-    success_url = reverse_lazy('producer-list')
-
-
-class ProducerUpdateView(UpdateView):
-    model = Producer
-    template_name = 'products/producer_update.html'
-    fields = ['name']
-    context_object_name = 'producer'
-
-    def get_success_url(self):
-        return reverse_lazy('producer-update', kwargs={'pk': self.object.pk})

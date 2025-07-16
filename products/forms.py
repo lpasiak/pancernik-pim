@@ -1,5 +1,6 @@
 from django import forms
-from .models import Product, ProductType, Compatibility, DeviceCode, Producer
+from .models import Product, ProductType, Compatibility, DeviceCode
+from producers.models import Producer
 
 # Product forms
 
