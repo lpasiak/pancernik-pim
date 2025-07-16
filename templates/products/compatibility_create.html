@@ -12,17 +12,8 @@
             {% csrf_token %}
             {{ form|crispy }}
             <button class="btn btn-sm btn-outline-success" type="submit">Stwórz kompatybilność</button>
-            <a href="{% url 'device-code-create'%}" class="btn btn-sm btn-outline-primary">Dodaj kod produktu</a>
         </div>
     </div>
     <p class="p-2 mt-1"><a href="{% url 'compatibility-list' %}">Wróć do listy kompatybilności</a></p>
 </div>
 {% endblock content %}
-
-{% block scripts %}
-  <script>
-    $(document).ready(function() {
-      $('.selectmultiple').select2();
-    });
-  </script>
-{% endblock scripts %}

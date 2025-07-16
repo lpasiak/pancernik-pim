@@ -1,7 +1,6 @@
 from django.contrib import admin
 from products.models import (
-    Product, ProductType, Compatibility, DeviceCode)
-
+    Product, ProductType, Compatibility)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -19,8 +18,3 @@ class ProductTypeAdmin(admin.ModelAdmin):
 @admin.register(Compatibility)
 class CompatibilityAdmin(admin.ModelAdmin):
     list_display = ('name',)
-
-
-@admin.register(DeviceCode)
-class DeviceCodeAdmin(admin.ModelAdmin):
-    list_display = ['code']

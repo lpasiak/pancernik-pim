@@ -5,20 +5,11 @@ from urllib.parse import urljoin
 import os
 
 
-class DeviceCode(models.Model):
-    code = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.code
-
-
 class Compatibility(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     image = models.ImageField(upload_to='compatibility_images/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='compatibility_images/thumbnails/', null=True, blank=True)
-
-    device_codes = models.ManyToManyField(DeviceCode, blank=True)
 
     def __str__(self):
         return self.name

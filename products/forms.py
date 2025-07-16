@@ -1,6 +1,7 @@
 from django import forms
-from .models import Product, ProductType, Compatibility, DeviceCode
+from .models import Product, ProductType, Compatibility
 from producers.models import Producer
+from django_select2.forms import ModelSelect2MultipleWidget
 
 # Product forms
 
@@ -43,21 +44,11 @@ class CompatibilityCreateForm(forms.ModelForm):
 
     class Meta:
         model = Compatibility
-        fields = ['name', 'image', 'device_codes']
+        fields = ['name', 'image']
 
 
 class CompatibilityUpdateForm(forms.ModelForm):
-    
+
     class Meta:
         model = Compatibility
-        fields = ['name', 'image', 'device_codes']
-
-
-# Device Code forms
-
-
-class DeviCeCodeCreateForm(forms.ModelForm):
-
-    class Meta:
-        model = DeviceCode
-        fields = ['code']
+        fields = ['name', 'image']

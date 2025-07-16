@@ -16,6 +16,5 @@ urlpatterns = [
     path('compatibilities/', CompatibilityListView.as_view(), name='compatibility-list'),
     path('compatibilities/create/', CompatibilityCreateView.as_view(), name='compatibility-create'),
     path('compatibilities/<int:pk>/delete/', CompatibilityDeleteView.as_view(), name='compatibility-delete'),
-    path('compatibilities/<int:pk>/update/', CompatibilityUpdateView.as_view(), name='compatibility-update'),
-    path('compatibilities/device-code/create/', DeviceCodeCreateView.as_view(), name='device-code-create'), 
+    path('compatibilities/<int:pk>/update/', CompatibilityUpdateView.as_view(), name='compatibility-update')
 ]
