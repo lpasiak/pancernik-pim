@@ -11,3 +11,5 @@ class ProductTypeAdmin(admin.ModelAdmin):
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    search_fields = ('name',)
+    fields = ('name', 'image', )
