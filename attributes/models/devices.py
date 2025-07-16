@@ -5,18 +5,18 @@ from urllib.parse import urljoin
 import os
 
 
-class Compatibility(models.Model):
+class Device(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
-    image = models.ImageField(upload_to='compatibility_images/', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='compatibility_images/thumbnails/', null=True, blank=True)
+    image = models.ImageField(upload_to='device_images/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='device_images/thumbnails/', null=True, blank=True)
 
     def __str__(self):
         return self.name
     
     def save(self, *args, **kwargs):
         try:
-            old = Compatibility.objects.get(pk=self.pk)
+            old = Device.objects.get(pk=self.pk)
             image_changed = old.image != self.image
 
             if image_changed and old.image:
@@ -25,7 +25,7 @@ class Compatibility(models.Model):
             if image_changed and old.thumbnail:
                 old.thumbnail.delete(save=False)
 
-        except Compatibility.DoesNotExist:
+        except Device.DoesNotExist:
             image_changed = True 
 
         super().save(*args, **kwargs)
@@ -59,10 +59,10 @@ class Compatibility(models.Model):
     def thumbnail_url(self):
         if self.thumbnail:
             return self.thumbnail.url
-        return urljoin(settings.MEDIA_URL, 'compatibility_images/thumbnails/thumbnail_default_photo.jpg')
+        return urljoin(settings.MEDIA_URL, 'device_images/thumbnails/thumbnail_default_photo.jpg')
 
     @property
     def image_url(self):
         if self.image:
             return self.image.url
-        return urljoin(settings.MEDIA_URL, 'compatibility_images/default_photo.jpg')
+        return urljoin(settings.MEDIA_URL, 'device_images/default_photo.jpg')

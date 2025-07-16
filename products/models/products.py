@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from .compatibilities import Compatibility
 
 
 class Product(models.Model):
@@ -8,8 +7,8 @@ class Product(models.Model):
     code = models.CharField(max_length=50, unique=True)
     producer_code = models.CharField(max_length=100, null=True, blank=True)
     producer = models.ForeignKey('producers.Producer', on_delete=models.SET_NULL, null=True, blank=True)
-    product_type = models.ForeignKey('products.ProductType', on_delete=models.SET_NULL, null=True, blank=True)
-    compatibilities = models.ManyToManyField(Compatibility, blank=True)
+    product_type = models.ForeignKey('attributes.ProductType', on_delete=models.SET_NULL, null=True, blank=True)
+    devices = models.ManyToManyField('attributes.Device', blank=True)
 
     class Meta:
         ordering = ['name']

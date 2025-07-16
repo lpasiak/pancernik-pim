@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Compatibility List{% endblock %}
+{% block title %}Device List{% endblock %}
 
 {% block content %}
 <div class="homepage-container rounded flex-fill p-1">
     <div class="card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="card-title mb-0">Kompatybilności</h2>
+                <h2 class="card-title mb-0">Urządzenia</h2>
                 <div>
-                    <a href="{% url 'compatibility-create' %}" class="btn btn-sm btn-success">Dodaj kompatybilność</a>
+                    <a href="{% url 'device-create' %}" class="btn btn-sm btn-success">Dodaj urządzenie</a>
                 </div>
             </div>
 
@@ -24,14 +24,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for compatibility in compatibilities %}
-                            {% if compatibility.pk %}
+                        {% for device in devices %}
+                            {% if device.pk %}
                             <tr>
-                                <td class="text-break">{{ compatibility.pk }}</td>
-                                <td class="text-break"><img src="{{ compatibility.thumbnail_url }}" alt="{{ compatibility.name }}" width="60" height="60"></td>
-                                <td class="text-break">{{ compatibility.name }}</td>
+                                <td class="text-break">{{ device.pk }}</td>
+                                <td class="text-break"><img src="{{ device.thumbnail_url }}" alt="{{ device.name }}" width="60" height="60"></td>
+                                <td class="text-break">{{ device.name }}</td>
                                 <td>
-                                    <a href="{% url 'compatibility-update' compatibility.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                                    <a href="{% url 'device-update' device.pk %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
                                 </td>
                             </tr>
                             {% endif %}

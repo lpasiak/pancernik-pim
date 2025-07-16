@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'products',
     'producers',
+    'attributes',
     # External apps
     'crispy_forms',
     'crispy_bootstrap5',
