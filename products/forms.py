@@ -1,7 +1,6 @@
 from django import forms
 from .models import Product, ProductType, Compatibility
-from producers.models import Producer
-from django_select2.forms import ModelSelect2MultipleWidget
+from django_select2.forms import Select2Widget
 
 # Product forms
 
@@ -10,7 +9,11 @@ class ProductCreateForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['name', 'code', 'producer_code', 'producer', 'product_type', 'compatibilities']
+        fields = '__all__'
+        widgets = {
+            'producer': Select2Widget,
+            'product_type': Select2Widget
+        }
         
 
 class ProductUpdateForm(forms.ModelForm):
